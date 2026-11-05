@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Registered student or instructor user profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique Google Auth UID" },
+        "name": { "type": "string", "description": "User display name" },
+        "email": { "type": "string", "description": "User email address" },
+        "avatar": { "type": "string", "description": "User profile photo URL" },
+        "role": { "type": "string", "enum": ["student", "instructor"], "description": "Access role" },
+        "createdAt": { "type": "string", "description": "Account registration timestamp" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "StudentProgress": {
+      "title": "StudentProgress",
+      "description": "Progress tracking record for an enrolled student",
+      "type": "object",
+      "properties": {
+        "courseId": { "type": "string", "description": "Course identifier" },
+        "studentId": { "type": "string", "description": "Student user ID" },
+        "enrolledAt": { "type": "string", "description": "Enrollment date" },
+        "lastActiveAt": { "type": "string", "description": "Last activity timestamp" },
+        "completedLessonIds": { "type": "array", "description": "List of completed lesson IDs" },
+        "currentLessonId": { "type": "string", "description": "Currently active lesson ID" },
+        "isCompleted": { "type": "boolean", "description": "Whether course is 100% completed" }
+      },
+      "required": ["courseId", "studentId", "completedLessonIds", "isCompleted"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile records indexed by auth UID"
+    },
+    "/progress/{progressId}": {
+      "schema": "StudentProgress",
+      "description": "Student progress tracking records"
+    }
+  }
+}

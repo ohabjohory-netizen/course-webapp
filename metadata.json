@@ -1,0 +1,6 @@
+{
+  "name": "Coursecraft LMS & Enrollment Portal",
+  "description": "Comprehensive course enrollment platform for students and instructors featuring interactive video lessons, student progress tracking, video uploads, and analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
